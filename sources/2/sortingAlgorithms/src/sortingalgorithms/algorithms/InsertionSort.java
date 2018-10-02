@@ -20,17 +20,17 @@ public class InsertionSort extends Algorithm<Person> {
     }
 
     @Override
-    public void sort(List<Person> list, Comparator<? super Person> c) {
-        for (int j = 1; j < list.size(); j++) {
-            Person person = list.get(j);
+    public void sort(List<Person> people, Comparator<? super Person> c) {
+        for (int j = 1; j < people.size(); j++) {
+            Person person = people.get(j);
             int i = j - 1;
 
-            while (i >= 0 && c.compare(list.get(i), person) > 0) {
-                list.set(i + 1, list.get(i));
+            while (i >= 0 && c.compare(people.get(i), person) > 0) {
+                people.set(i + 1, people.get(i));
                 i--;
             }
 
-            list.set(i + 1, person);
+            people.set(i + 1, person);
         }
     }
 

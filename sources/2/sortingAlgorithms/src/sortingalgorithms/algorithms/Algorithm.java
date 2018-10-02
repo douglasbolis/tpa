@@ -31,11 +31,11 @@ public abstract class Algorithm<T> {
     }
 
     /**
-     * Performs sort order on list according to method _c_.
+     * Performs sort order on people according to method _c_.
      *
-     * @param list
+     * @param people List of people.
      * @param c
      */
-    public abstract void sort(List<T> list, Comparator<? super T> c);
+    public abstract void sort(List<T> people, Comparator<? super T> c);
 
 }
