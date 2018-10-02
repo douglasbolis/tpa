@@ -21,16 +21,21 @@ public class SelectionSort extends Algorithm<Person> {
 
     @Override
     public void sort(List<Person> list, Comparator<? super Person> c) {
-        for (int j = 1; j < list.size(); j++) {
+        for (int j = 0; j < list.size(); j++) {
             Person person = list.get(j);
-            int i = j - 1;
+            int k = j;
 
-            while (i >= 0 && c.compare(list.get(i), person) > 0) {
-                list.set(i + 1, list.get(i));
-                i--;
+            for ( int i = k; i < list.size(); i++) {
+                Person p2 = list.get(i);
+                int comp = c.compare(p2, person);
+                if (comp < 0) {
+                    k = i;
+                    person = list.get(i);
+                }
             }
 
-            list.set(i + 1, person);
+            list.set(k, list.get(j));
+            list.set(j, person);
         }
     }
 
