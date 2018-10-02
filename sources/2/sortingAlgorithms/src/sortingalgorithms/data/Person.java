@@ -16,40 +16,70 @@ public class Person {
     private String mail;
     private char gender;
     private String uid;
-    private Date birthdate;
+    private String birthdate;
     private Integer height;
-    private Integer weight;
+    private double weight;
 
-    public Person(Person person) {
-        mail = person.mail;
-        gender = person.gender;
-        uid = person.uid;
-        birthdate = person.birthdate;
-        height = person.height;
-        weight = person.weight;
+    public Person(String mail, char gender, String uid, String birthdate, Integer height, double weight) {
+        this.mail = mail;
+        this.gender = gender;
+        this.uid = uid;
+        this.birthdate = birthdate;
+        this.height = height;
+        this.weight = weight;
     }
 
+    /**
+     * Get the mail from the person.
+     *
+     * @return
+     */
     public String getMail() {
         return mail;
     }
 
+    /**
+     * Get the gender from the person.
+     *
+     * @return
+     */
     public char getGender() {
         return gender;
     }
 
+    /**
+     * The the uid from the person.
+     *
+     * @return
+     */
     public String getUid() {
         return uid;
     }
 
-    public Date getBirthdate() {
+    /**
+     * Get the birthdate from the person.
+     *
+     * @return
+     */
+    public String getBirthdate() {
         return birthdate;
     }
 
+    /**
+     * Get the height from the person.
+     *
+     * @return
+     */
     public Integer getHeight() {
         return height;
     }
 
-    public Integer getWeight() {
+    /**
+     * Get the weight from the person.
+     *
+     * @return
+     */
+    public double getWeight() {
         return weight;
     }
 
