@@ -7,35 +7,35 @@ package sortingalgorithms.algorithms;
 
 import java.util.Comparator;
 import java.util.List;
-import sortingalgorithms.data.Person;
 
 /**
  *
  * @author douglas
+ * @param <T>
  */
-public class SelectionSort extends Algorithm<Person> {
+public class SelectionSort<T> extends Algorithm<T> {
 
     public SelectionSort() {
         super("selectionsort");
     }
 
     @Override
-    public void sort(List<Person> people, Comparator<? super Person> c) {
-        for (int j = 0; j < people.size(); j++) {
-            Person person = people.get(j);
+    public void sort(List<T> ts, Comparator<? super T> c) {
+        for (int j = 0; j < ts.size(); j++) {
+            T person = ts.get(j);
             int k = j;
 
-            for ( int i = k; i < people.size(); i++) {
-                Person p2 = people.get(i);
+            for ( int i = k; i < ts.size(); i++) {
+                T p2 = ts.get(i);
                 int comp = c.compare(p2, person);
                 if (comp < 0) {
                     k = i;
-                    person = people.get(i);
+                    person = ts.get(i);
                 }
             }
 
-            people.set(k, people.get(j));
-            people.set(j, person);
+            ts.set(k, ts.get(j));
+            ts.set(j, person);
         }
     }
 

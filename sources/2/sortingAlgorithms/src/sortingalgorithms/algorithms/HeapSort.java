@@ -7,30 +7,29 @@ package sortingalgorithms.algorithms;
 
 import java.util.Comparator;
 import java.util.List;
-import sortingalgorithms.data.Person;
 
 /**
  *
  * @author douglas
  */
-public class HeapSort extends Algorithm<Person> {
+public class HeapSort<T> extends Algorithm<T> {
 
     public HeapSort() {
         super("heapsort");
     }
 
     @Override
-    public void sort(List<Person> list, Comparator<? super Person> c) {
-        for (int j = 1; j < list.size(); j++) {
-            Person person = list.get(j);
+    public void sort(List<T> ts, Comparator<? super T> c) {
+        for (int j = 1; j < ts.size(); j++) {
+            T person = ts.get(j);
             int i = j - 1;
 
-            while (i >= 0 && c.compare(list.get(i), person) > 0) {
-                list.set(i + 1, list.get(i));
+            while (i >= 0 && c.compare(ts.get(i), person) > 0) {
+                ts.set(i + 1, ts.get(i));
                 i--;
             }
 
-            list.set(i + 1, person);
+            ts.set(i + 1, person);
         }
     }
 

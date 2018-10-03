@@ -11,6 +11,7 @@ import java.util.List;
 import sortingalgorithms.algorithms.Algorithm;
 import sortingalgorithms.algorithms.HeapSort;
 import sortingalgorithms.algorithms.InsertionSort;
+import sortingalgorithms.algorithms.MergeSort;
 import sortingalgorithms.algorithms.SelectionSort;
 import sortingalgorithms.data.Person;
 
@@ -24,27 +25,34 @@ public class SortingAlgorithms {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Algorithm algorithm = new SelectionSort();
-        List<Person> list = new LinkedList();
+        Algorithm algorithm = new MergeSort<Integer>();
+        List<Integer> list = new LinkedList();
 
-        Person p1 = new Person("douglas@mail.com", 'm', "c", "2018", 189, 82.0);
-        Person p2 = new Person("maria@mail.com", 'f', "b", "2018", 190, 85.0);
-        Person p3 = new Person("pedro@mail.com", 'm', "a", "2018", 175, 79.0);
+//        Person p1 = new Person("douglas@mail.com", 'm', "c", "2018", 189, 82.0);
+//        Person p2 = new Person("maria@mail.com", 'f', "b", "2018", 190, 85.0);
+//        Person p3 = new Person("pedro@mail.com", 'm', "a", "2018", 175, 79.0);
 
-        list.add(p1);
-        list.add(p2);
-        list.add(p3);
+        list.add(3);
+        list.add(2);
+        list.add(1);
 
-        algorithm.sort(list, new Comparator<Person>() {
+//        algorithm.sort(list, new Comparator<Person>() {
+//            @Override
+//            public int compare(Person a, Person b) {
+//                return a.getHeight().compareTo(b.getHeight());
+//            }
+//        });
+
+        algorithm.sort(list, new Comparator<Integer>() {
             @Override
-            public int compare(Person a, Person b) {
-                return a.getHeight().compareTo(b.getHeight());
+            public int compare(Integer a, Integer b) {
+                return a.compareTo(b);
             }
         });
 
-        for(Person person : list){
-            System.out.println(person.getUid());
-	}
+        list.forEach((Integer person) -> {
+            System.out.println(person);
+        });
     }
     
 }

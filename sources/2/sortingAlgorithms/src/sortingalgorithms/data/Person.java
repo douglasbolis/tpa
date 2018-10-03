@@ -11,14 +11,14 @@ import java.util.Date;
  *
  * @author douglas
  */
-public class Person {
+public class Person implements Cloneable {
 
-    private String mail;
-    private char gender;
-    private String uid;
-    private String birthdate;
-    private Integer height;
-    private double weight;
+    private final String mail;
+    private final char gender;
+    private final String uid;
+    private final String birthdate;
+    private final Integer height;
+    private final double weight;
 
     public Person(String mail, char gender, String uid, String birthdate, Integer height, double weight) {
         this.mail = mail;

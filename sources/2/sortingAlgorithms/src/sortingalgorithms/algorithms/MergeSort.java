@@ -7,30 +7,59 @@ package sortingalgorithms.algorithms;
 
 import java.util.Comparator;
 import java.util.List;
-import sortingalgorithms.data.Person;
 
 /**
  *
  * @author douglas
+ * @param <T>
  */
-public class MergeSort extends Algorithm<Person> {
+public class MergeSort<T> extends Algorithm<T> {
 
     public MergeSort() {
         super("mergesort");
     }
 
     @Override
-    public void sort(List<Person> list, Comparator<? super Person> c) {
-        for (int j = 1; j < list.size(); j++) {
-            Person person = list.get(j);
-            int i = j - 1;
+    public void sort(List<T> ts, Comparator<? super T> comp) {
+        this.mergeSort(ts, 0, ts.size(), comp);
+    }
 
-            while (i >= 0 && c.compare(list.get(i), person) > 0) {
-                list.set(i + 1, list.get(i));
-                i--;
+    private void mergeSort(List<T> ts, int first, int last, Comparator<? super T> comp) {
+        if (first < last) {
+            int half = (int) Math.ceil((first + last) / 2);
+            this.mergeSort(ts, first, half, comp);
+            this.mergeSort(ts, half + 1, last, comp);
+            this.merge(ts, first, half, last, comp);
+        }
+    }
+
+    private void merge(List<T> ts, int first, int half, int last, Comparator<? super T> comp) {
+        List<T> left = super.copy(ts, first, half + 1);
+        List<T> right = super.copy(ts, half, last);
+
+        int i = 0;
+        int j = 0;
+
+        for (int k = first; k < last; k++) {
+            T lt = left.get(i);
+            T rt = right.get(j);
+
+            if (lt != null && rt != null) {
+                if (comp.compare(lt, rt) >= 0) {
+                    ts.set(k, rt);
+                    j++;
+                } else {
+                    ts.set(k, lt);
+                    i++;
+                }
+            } else
+            if (lt == null) {
+                ts.set(k, rt);
+                j++;
+            } else {
+                ts.set(k, lt);
+                i++;
             }
-
-            list.set(i + 1, person);
         }
     }
 

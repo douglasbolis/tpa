@@ -6,6 +6,7 @@
 package sortingalgorithms.algorithms;
 
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -13,10 +14,10 @@ import java.util.List;
  * @author douglas
  * @param <T> Generic type.
  */
-public abstract class Algorithm<T> {
+public abstract class Algorithm<T> implements IAlgorithm<T> {
 
     protected String id;
-    
+
     protected Algorithm(String id) {
         this.id = id;
     }
@@ -26,6 +27,7 @@ public abstract class Algorithm<T> {
      *
      * @return
      */
+    @Override
     public String getId() {
         return id;
     }
@@ -34,8 +36,30 @@ public abstract class Algorithm<T> {
      * Performs sort order on people according to method _c_.
      *
      * @param people List of people.
-     * @param c
+     * @param comp
      */
-    public abstract void sort(List<T> people, Comparator<? super T> c);
+    @Override
+    public abstract void sort(List<T> people, Comparator<? super T> comp);
+
+    /**
+     * Copy and return a new list of t.
+     *
+     * @param ts List of t.
+     * @param first Number of the first item in the list.
+     * @param last Number of the last item in the list.
+     * @return
+     */
+    @Override
+    public List<T> copy(List<T> ts, int first, int last) {
+        List<T> copy = new LinkedList();
+
+        for ( int i = first; i < last; i++) {
+            copy.add(ts.get(i));
+        }
+
+        copy.add(null);
+
+        return copy;
+    }
 
 }
