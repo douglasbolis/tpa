@@ -6,9 +6,9 @@
 package sortingalgorithms.algorithms;
 
 import java.util.Comparator;
-import java.util.List;
 
 /**
+ * Interface IAlgorithm.
  *
  * @author douglas
  * @param <T>
@@ -17,8 +17,6 @@ public interface IAlgorithm<T> {
 
     public String getId();
 
-    public abstract void sort(List<T> people, Comparator<? super T> c);
-
-    public List<T> copy(List<T> people, int fisrt, int last);
+    public abstract void sort(T[] ts, Comparator<? super T> comp);
 
 }

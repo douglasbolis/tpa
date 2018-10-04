@@ -6,9 +6,9 @@
 package sortingalgorithms.algorithms;
 
 import java.util.Comparator;
-import java.util.List;
 
 /**
+ * Class HeapSort.
  *
  * @author douglas
  */
@@ -19,17 +19,16 @@ public class HeapSort<T> extends Algorithm<T> {
     }
 
     @Override
-    public void sort(List<T> ts, Comparator<? super T> c) {
-        for (int j = 1; j < ts.size(); j++) {
-            T person = ts.get(j);
+    public void sort(T[] ts, Comparator<? super T> comp) {
+        for (int j = 1; j < ts.length; j++) {
             int i = j - 1;
 
-            while (i >= 0 && c.compare(ts.get(i), person) > 0) {
-                ts.set(i + 1, ts.get(i));
+            while (i >= 0 && comp.compare(ts[i], ts[j]) > 0) {
+                ts[i + 1] = ts[i];
                 i--;
             }
 
-            ts.set(i + 1, person);
+            ts[i + 1] = ts[j];
         }
     }
 

@@ -6,9 +6,9 @@
 package sortingalgorithms.algorithms;
 
 import java.util.Comparator;
-import java.util.List;
 
 /**
+ * Class MergeSort.
  *
  * @author douglas
  * @param <T>
@@ -20,46 +20,81 @@ public class MergeSort<T> extends Algorithm<T> {
     }
 
     @Override
-    public void sort(List<T> ts, Comparator<? super T> comp) {
-        this.mergeSort(ts, 0, ts.size(), comp);
+    public void sort(T[] ts, Comparator<? super T> comp) {
+        this.mergeSort(ts, 0, ts.length - 1, comp);
     }
 
-    private void mergeSort(List<T> ts, int first, int last, Comparator<? super T> comp) {
-        if (first < last) {
-            int half = (int) Math.ceil((first + last) / 2);
-            this.mergeSort(ts, first, half, comp);
-            this.mergeSort(ts, half + 1, last, comp);
-            this.merge(ts, first, half, last, comp);
+    /**
+     * Realiza a ordenação dos elementos do vertor ts com o mergeSort.
+     *
+     * @param ts Vetor com os elementos para a ordenação.
+     * @param lowerIndex Número do menor índice para a ordenação.
+     * @param higherIndex Número do maior índice para a ordenação.
+     * @param comp Função comparadora.
+     * @return
+     */
+    private void mergeSort(T[] ts, int lowerIndex, int higherIndex, Comparator<? super T> comp) {
+        if (lowerIndex < higherIndex) {
+            int middleIndex = (lowerIndex + higherIndex) / 2;
+            this.mergeSort(ts, lowerIndex, middleIndex, comp);
+            this.mergeSort(ts, middleIndex + 1, higherIndex, comp);
+            this.mergeParts(ts, lowerIndex, middleIndex, higherIndex, comp);
         }
     }
 
-    private void merge(List<T> ts, int first, int half, int last, Comparator<? super T> comp) {
-        List<T> left = super.copy(ts, first, half + 1);
-        List<T> right = super.copy(ts, half, last);
+    /**
+     * Realiza a comparação e merge dos elementos dos dois vetores.
+     *
+     * @param ts Vetor com os elementos para a cópia.
+     * @param lowerIndex Número do menor índice para a cópia.
+     * @param higherIndex Número do maior índice para a cópia.
+     * @param comp Função comparadora.
+     * @return
+     */
+    private void mergeParts(T[] ts, int lowerIndex, int middleIndex, int higherIndex, Comparator<? super T> comp) {
+        int n1 = middleIndex - lowerIndex + 1;
+        int n2 = higherIndex - middleIndex;
+
+        T[] leftT = (T[]) new Object[n1];
+        T[] rightT = (T[]) new Object[n2];
+
+        // Preenchendo o vetor da esquerda.
+        for (int i = 0; i < n1; i++) {
+            leftT[i] = ts[lowerIndex + i];
+        }
+
+        // Preenchendo o vetor da direita.
+        for (int j = 0; j < n2; j++) {
+            rightT[j] = ts[middleIndex + j + 1];
+        }
 
         int i = 0;
         int j = 0;
+        int k = 0;
 
-        for (int k = first; k < last; k++) {
-            T lt = left.get(i);
-            T rt = right.get(j);
-
-            if (lt != null && rt != null) {
-                if (comp.compare(lt, rt) >= 0) {
-                    ts.set(k, rt);
-                    j++;
-                } else {
-                    ts.set(k, lt);
-                    i++;
-                }
-            } else
-            if (lt == null) {
-                ts.set(k, rt);
+        while (i < n1 && j < n2) {
+            if (comp.compare(leftT[i], rightT[j]) > 0) {
+                ts[k] = rightT[j];
                 j++;
             } else {
-                ts.set(k, lt);
+                ts[k] = leftT[i];
                 i++;
             }
+            k++;
+        }
+
+        // Percorrendo restante do vetor da esquerda.
+        while (i < n1) {
+            ts[k] = leftT[i];
+            i++;
+            k++;
+        }
+
+        // Percorrendo restante do vetor da direita.
+        while (j < n2) {
+            ts[k] = rightT[j];
+            j++;
+            k++;
         }
     }
 

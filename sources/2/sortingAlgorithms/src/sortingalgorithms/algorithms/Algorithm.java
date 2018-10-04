@@ -6,10 +6,9 @@
 package sortingalgorithms.algorithms;
 
 import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
 
 /**
+ * Class Algorithm.
  *
  * @author douglas
  * @param <T> Generic type.
@@ -33,33 +32,12 @@ public abstract class Algorithm<T> implements IAlgorithm<T> {
     }
 
     /**
-     * Performs sort order on people according to method _c_.
+     * Realiza a ordenação dos elementos do vetor ts utilizando comparador comp.
      *
-     * @param people List of people.
-     * @param comp
+     * @param ts Vertor com os elementos.
+     * @param comp Função comparadora.
      */
     @Override
-    public abstract void sort(List<T> people, Comparator<? super T> comp);
-
-    /**
-     * Copy and return a new list of t.
-     *
-     * @param ts List of t.
-     * @param first Number of the first item in the list.
-     * @param last Number of the last item in the list.
-     * @return
-     */
-    @Override
-    public List<T> copy(List<T> ts, int first, int last) {
-        List<T> copy = new LinkedList();
-
-        for ( int i = first; i < last; i++) {
-            copy.add(ts.get(i));
-        }
-
-        copy.add(null);
-
-        return copy;
-    }
+    public abstract void sort(T[] ts, Comparator<? super T> comp);
 
 }

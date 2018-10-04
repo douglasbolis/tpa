@@ -6,9 +6,9 @@
 package sortingalgorithms.algorithms;
 
 import java.util.Comparator;
-import java.util.List;
 
 /**
+ * Class SelectionSort.
  *
  * @author douglas
  * @param <T>
@@ -20,22 +20,21 @@ public class SelectionSort<T> extends Algorithm<T> {
     }
 
     @Override
-    public void sort(List<T> ts, Comparator<? super T> c) {
-        for (int j = 0; j < ts.size(); j++) {
-            T person = ts.get(j);
-            int k = j;
+    public void sort(T[] ts, Comparator<? super T> comp) {
+        T temporary;
+        int lowerIndex;
 
-            for ( int i = k; i < ts.size(); i++) {
-                T p2 = ts.get(i);
-                int comp = c.compare(p2, person);
-                if (comp < 0) {
-                    k = i;
-                    person = ts.get(i);
-                }
+        for (int i = 0; i < ts.length - 1; i++) {
+            lowerIndex = i;
+            for (int j = i + 1; j < ts.length; j++) {
+              if (comp.compare(ts[lowerIndex], ts[j]) > 0) {
+                lowerIndex = j;
+              }
             }
 
-            ts.set(k, ts.get(j));
-            ts.set(j, person);
+            temporary = ts[i];
+            ts[i] = ts[lowerIndex];
+            ts[lowerIndex] = temporary;
         }
     }
 
