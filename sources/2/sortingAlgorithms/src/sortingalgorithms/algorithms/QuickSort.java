@@ -21,16 +21,43 @@ public class QuickSort<T> extends Algorithm<T> {
 
     @Override
     public void sort(T[] ts, Comparator<? super T> comp) {
-        for (int j = 1; j < ts.length; j++) {
-            int i = j - 1;
+        this.quickSort(ts, 0, ts.length - 1, comp);
+    }
 
-            while (i >= 0 && comp.compare(ts[i], ts[j]) > 0) {
-                ts[i + 1] = ts[i];
-                i--;
-            }
-
-            ts[i + 1] = ts[j];
+    private void quickSort(T[] ts, int lowerIndex, int higherIndex, Comparator<? super T> comp) {
+        if (lowerIndex < higherIndex) {
+            int pivot = this.partition(ts, lowerIndex, higherIndex, comp);
+            this.quickSort(ts, lowerIndex, pivot - 1, comp);
+            this.quickSort(ts, pivot + 1, higherIndex, comp);
         }
+    }
+
+    private int partition(T[] ts, int lowerIndex, int higherIndex, Comparator<? super T> comp) {
+        T temporary, pivot = ts[lowerIndex];
+        int i = lowerIndex + 1;
+        int f = higherIndex;
+
+        while (i <= f) {
+            if (comp.compare(ts[i], pivot) <= 0) {
+                // Realiza a troca de ts[i] com ts[j]
+                i++;
+            } else
+            if (comp.compare(pivot, ts[f]) < 0) {
+                f--;
+            } else {
+                temporary = ts[i];
+                ts[i] = ts[f];
+                ts[f] = temporary;
+                i++;
+                f--;
+            }
+        }
+
+        // Realiza a troca de ts[i + 1] com ts[higerIndex]
+        ts[lowerIndex] = ts[f];
+        ts[f] = pivot;
+
+        return f;
     }
 
 }
