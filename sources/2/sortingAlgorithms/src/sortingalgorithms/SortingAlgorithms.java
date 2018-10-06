@@ -24,7 +24,11 @@ public class SortingAlgorithms {
      */
     public static void main(String[] args) {
 
-        Algorithm algorithm = new QuickSort();
+        for (int i = 0; i < args.length; i++) {
+            System.out.println(args[i]);
+        }
+
+        Algorithm<Person> algorithm = new QuickSort();
 
         Person p1 = new Person("douglas@mail.com", 'm', "c", new Date(), 189, 82.0);
         Person p2 = new Person("maria@mail.com", 'f', "b", new Date(), 190, 85.0);
@@ -45,12 +49,7 @@ public class SortingAlgorithms {
 
         Person[] people = {p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16};
 
-        algorithm.sort(people, new Comparator<Person>() {
-            @Override
-            public int compare(Person a, Person b) {
-                return a.getUid().compareTo(b.getUid());
-            }
-        });
+        algorithm.sort(people, (a, b) -> a.getUid().compareTo(b.getUid()));
 
         for (Person person : people) {
             System.out.println(person.getUid());

@@ -38,6 +38,6 @@ public abstract class Algorithm<T> implements IAlgorithm<T> {
      * @param comp Função comparadora.
      */
     @Override
-    public abstract void sort(T[] ts, Comparator<? super T> comp);
+    public abstract void sort(T[] ts, Comparator<T> comp);
 
 }

@@ -20,7 +20,7 @@ public class QuickSort<T> extends Algorithm<T> {
     }
 
     @Override
-    public void sort(T[] ts, Comparator<? super T> comp) {
+    public void sort(T[] ts, Comparator<T> comp) {
         this.quickSort(ts, 0, ts.length - 1, comp);
     }
 

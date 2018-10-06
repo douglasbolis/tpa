@@ -5,6 +5,7 @@
  */
 package sortingalgorithms.algorithms;
 
+import java.lang.reflect.Array;
 import java.util.Comparator;
 
 /**
@@ -20,7 +21,7 @@ public class MergeSort<T> extends Algorithm<T> {
     }
 
     @Override
-    public void sort(T[] ts, Comparator<? super T> comp) {
+    public void sort(T[] ts, Comparator<T> comp) {
         this.mergeSort(ts, 0, ts.length - 1, comp);
     }
 
@@ -52,11 +53,15 @@ public class MergeSort<T> extends Algorithm<T> {
      * @return
      */
     private void mergeParts(T[] ts, int lowerIndex, int middleIndex, int higherIndex, Comparator<? super T> comp) {
+
+        Class<T> type = null;
         int n1 = middleIndex - lowerIndex + 1;
         int n2 = higherIndex - middleIndex;
 
-        T[] leftT = (T[]) new Object[n1];
-        T[] rightT = (T[]) new Object[n2];
+        @SuppressWarnings("unchecked")
+        T[] leftT = (T[]) Array.newInstance(type, n1);
+        @SuppressWarnings("unchecked")
+        T[] rightT = (T[]) Array.newInstance(type, n2);
 
         // Preenchendo o vetor da esquerda.
         for (int i = 0; i < n1; i++) {
@@ -96,6 +101,7 @@ public class MergeSort<T> extends Algorithm<T> {
             j++;
             k++;
         }
+
     }
 
 }

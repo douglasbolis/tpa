@@ -20,7 +20,7 @@ public class InsertionSort<T> extends Algorithm<T> {
     }
 
     @Override
-    public void sort(T[] ts, Comparator<? super T> comp) {
+    public void sort(T[] ts, Comparator<T> comp) {
         for (int j = 1; j < ts.length; j++) {
             int i = j - 1;
 

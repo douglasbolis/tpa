@@ -20,7 +20,7 @@ public class SelectionSort<T> extends Algorithm<T> {
     }
 
     @Override
-    public void sort(T[] ts, Comparator<? super T> comp) {
+    public void sort(T[] ts, Comparator<T> comp) {
         T temporary;
         int lowerIndex;
 
