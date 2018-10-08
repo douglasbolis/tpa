@@ -8,7 +8,7 @@ package sortingalgorithms.algorithms;
 import java.util.Comparator;
 
 /**
- * Class SelectionSort.
+ * Classe SelectionSort.
  *
  * @author douglas
  * @param <T>

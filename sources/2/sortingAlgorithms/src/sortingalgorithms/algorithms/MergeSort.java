@@ -9,7 +9,7 @@ import java.lang.reflect.Array;
 import java.util.Comparator;
 
 /**
- * Class MergeSort.
+ * Classe MergeSort.
  *
  * @author douglas
  * @param <T>
@@ -28,40 +28,41 @@ public class MergeSort<T> extends Algorithm<T> {
     /**
      * Realiza a ordenação dos elementos do vertor ts com o mergeSort.
      *
+     * @private
      * @param ts Vetor com os elementos para a ordenação.
      * @param lowerIndex Número do menor índice para a ordenação.
      * @param higherIndex Número do maior índice para a ordenação.
      * @param comp Função comparadora.
      * @return
      */
-    private void mergeSort(T[] ts, int lowerIndex, int higherIndex, Comparator<? super T> comp) {
+    private void mergeSort(T[] ts, int lowerIndex, int higherIndex, Comparator<T> comp) {
+
         if (lowerIndex < higherIndex) {
             int middleIndex = (lowerIndex + higherIndex) / 2;
             this.mergeSort(ts, lowerIndex, middleIndex, comp);
             this.mergeSort(ts, middleIndex + 1, higherIndex, comp);
             this.mergeParts(ts, lowerIndex, middleIndex, higherIndex, comp);
         }
+
     }
 
     /**
      * Realiza a comparação e merge dos elementos dos dois vetores.
      *
+     * @private
      * @param ts Vetor com os elementos para a cópia.
      * @param lowerIndex Número do menor índice para a cópia.
      * @param higherIndex Número do maior índice para a cópia.
      * @param comp Função comparadora.
      * @return
      */
-    private void mergeParts(T[] ts, int lowerIndex, int middleIndex, int higherIndex, Comparator<? super T> comp) {
+    private void mergeParts(T[] ts, int lowerIndex, int middleIndex, int higherIndex, Comparator<T> comp) {
 
-        Class<T> type = null;
         int n1 = middleIndex - lowerIndex + 1;
         int n2 = higherIndex - middleIndex;
 
-        @SuppressWarnings("unchecked")
-        T[] leftT = (T[]) Array.newInstance(type, n1);
-        @SuppressWarnings("unchecked")
-        T[] rightT = (T[]) Array.newInstance(type, n2);
+        T[] leftT = (T[]) new Object[n1];
+        T[] rightT = (T[]) new Object[n2];
 
         // Preenchendo o vetor da esquerda.
         for (int i = 0; i < n1; i++) {

@@ -8,7 +8,7 @@ package sortingalgorithms.algorithms;
 import java.util.Comparator;
 
 /**
- * Class QuickSort.
+ * Classe QuickSort.
  *
  * @author douglas
  * @param <T>
@@ -24,15 +24,37 @@ public class QuickSort<T> extends Algorithm<T> {
         this.quickSort(ts, 0, ts.length - 1, comp);
     }
 
-    private void quickSort(T[] ts, int lowerIndex, int higherIndex, Comparator<? super T> comp) {
+    /**
+     * Realiza a ordenação dos elementos do vertor ts com o quicksort.
+     *
+     * @private
+     * @param ts Vertor com os elementos.
+     * @param lowerIndex Número do menor índice.
+     * @param higherIndex Número do maior índice.
+     * @param comp Função comparadora.
+     */
+    private void quickSort(T[] ts, int lowerIndex, int higherIndex, Comparator<T> comp) {
+
         if (lowerIndex < higherIndex) {
             int pivot = this.partition(ts, lowerIndex, higherIndex, comp);
             this.quickSort(ts, lowerIndex, pivot - 1, comp);
             this.quickSort(ts, pivot + 1, higherIndex, comp);
         }
+
     }
 
-    private int partition(T[] ts, int lowerIndex, int higherIndex, Comparator<? super T> comp) {
+    /**
+     * Realiza a partição do vetor ts e retorna o índice de partição.
+     *
+     * @private
+     * @param ts Vetor com os elementos para a ordenação.
+     * @param lowerIndex Número do menor índice.
+     * @param higherIndex Número do maior índice.
+     * @param comp Função comparadora.
+     * @return
+     */
+    private int partition(T[] ts, int lowerIndex, int higherIndex, Comparator<T> comp) {
+
         T temporary, pivot = ts[lowerIndex];
         int i = lowerIndex + 1;
         int f = higherIndex;
@@ -58,6 +80,7 @@ public class QuickSort<T> extends Algorithm<T> {
         ts[f] = pivot;
 
         return f;
+
     }
 
 }

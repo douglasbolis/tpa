@@ -8,7 +8,7 @@ package sortingalgorithms.algorithms;
 import java.util.Comparator;
 
 /**
- * Class Algorithm.
+ * Classe Algorithm.
  *
  * @author douglas
  * @param <T> Generic type.
