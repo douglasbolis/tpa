@@ -5,6 +5,11 @@
  */
 package sortingalgorithms.utils;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
 /**
  * Classe CsvFile.
  *
@@ -19,45 +24,86 @@ public class CsvFile {
      * @return Nome do arquivo de dados.
      */
     public String getFilename(String[] args) {
-        return "file.csv";
+        String[] flags = {"filename", "f"};
+        return Utils.getArgument(args, flags);
     }
 
     /**
      * Calcula o número de linhas do arquivo csv.
      *
+     * @param args
      * @return Número de linhas no arquivo de dados.
      */
-    public Integer getNumberLines() {
-        return 16;
+    public Integer getNumberLines(String[] args) {
+        String filename = this.getFilename(args);
+        BufferedReader br = null;
+        Integer numberLines = 0;
+        String line = "";
+
+        try {
+
+            br = new BufferedReader(new FileReader(filename));
+            for (numberLines = 0; (line = br.readLine()) != null; numberLines++) {
+            }
+
+        } catch (FileNotFoundException error) {
+            error.printStackTrace();
+        } catch (IOException error) {
+            error.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException error) {
+                    error.printStackTrace();
+                }
+            }
+        }
+
+        return numberLines;
+
     }
 
     /**
      * Reune o conteúdo do arquivo de dados.
      *
+     * @param args
      * @return Vetor com o conteúdo do arquivo de dados.
      */
-    public String[] getContent() {
-        int numberLines = this.getNumberLines();
+    public String[] getContent(String[] args) {
+        String filename = this.getFilename(args);
+        int numberLines = this.getNumberLines(args);
         String[] content = new String[numberLines];
+        BufferedReader br = null;
+        String line = "";
+        int i = 0;
 
-        content[0] = "douglas@mail.com  ;m  ;c  ;2018-03-30 ;189    ;82.0";
-        content[1] = "maria@mail.com    ;f  ;b  ;2018-03-30 ;190    ;85.0";
-        content[2] = "pedro@mail.com    ;m  ;a  ;2018-03-30 ;175    ;79.0";
-        content[3] = "joao@mail.com     ;m  ;f  ;2018-03-30 ;175    ;79.0";
-        content[4] = "denis@mail.com    ;m  ;h  ;2018-03-30 ;175    ;79.0";
-        content[5] = "rafael@mail.com   ;m  ;g  ;2018-03-30 ;175    ;79.0";
-        content[6] = "mara@mail.com     ;f  ;i  ;2018-03-30 ;175    ;79.0";
-        content[7] = "joana@mail.com    ;f  ;p  ;2018-03-30 ;175    ;79.0";
-        content[8] = "helena@mail.com   ;f  ;k  ;2018-03-30 ;175    ;79.0";
-        content[9] = "mario@mail.com    ;m  ;o  ;2018-03-30 ;175    ;79.0";
-        content[10] = "diego@mail.com   ;m  ;n  ;2018-03-30 ;175    ;79.0";
-        content[11] = "jonas@mail.com   ;m  ;m  ;2018-03-30 ;175    ;79.0";
-        content[12] = "ana@mail.com     ;f  ;l  ;2018-03-30 ;175    ;79.0";
-        content[13] = "mariano@mail.com ;m  ;e  ;2018-03-30 ;175    ;79.0";
-        content[14] = "danilo@mail.com  ;m  ;j  ;2018-03-30 ;175    ;79.0";
-        content[15] = "diana@mail.com   ;f  ;d  ;2018-03-30 ;175    ;79.0";
+        try {
+
+            br = new BufferedReader(new FileReader(filename));
+            while ((line = br.readLine()) != null) {
+
+                content[i] = line;
+                i++;
+
+            }
+
+        } catch (FileNotFoundException error) {
+            error.printStackTrace();
+        } catch (IOException error) {
+            error.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException error) {
+                    error.printStackTrace();
+                }
+            }
+        }
 
         return content;
+
     }
 
 }

@@ -37,8 +37,10 @@ public class SortingAlgorithms {
         if (algorithm == null) {
             throw new Exception("Algoritmo não definido.");
         }
+        
+        Integer numberLines = csvFile.getNumberLines(args);
 
-        String[] content = csvFile.getContent();
+        String[] content = csvFile.getContent(args);
 
         Person[] people = Utils.convertToPerson(content);
 

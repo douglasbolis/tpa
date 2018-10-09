@@ -5,6 +5,8 @@
  */
 package sortingalgorithms.algorithms;
 
+import sortingalgorithms.utils.Utils;
+
 /**
  * Classe AlgorithmFactory para definir qual algoritmo de ordenação será
  * utilizado.
@@ -23,7 +25,8 @@ public class AlgorithmFactory<T> {
     public Algorithm<T> selectAlgorithm(String[] args) {
 
         Algorithm<T> algorithm = null;
-        String sortingType = "mergesort";
+        String[] flags = {"algorithm", "a"};
+        String sortingType = Utils.getArgument(args, flags);
 
         if (sortingType.equalsIgnoreCase("selectionsort")) {
             algorithm = new SelectionSort();

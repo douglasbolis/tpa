@@ -21,6 +21,7 @@ public class Utils {
      * @return Vetor de pessoas.
      */
     public static Person[] convertToPerson(String[] content) {
+
         Integer numberPeople = content.length;
         Person[] people = new Person[numberPeople];
         
@@ -30,6 +31,49 @@ public class Utils {
         }
 
         return people;
+
+    }
+
+    /**
+     * Busca o argumento desejado no vetor de argumentos.
+     *
+     * @param args
+     * @param flags
+     * @return
+     */
+    public static String getArgument(String[] args, String[] flags) {
+
+        String flag = null;
+        int i = 0;
+
+        while (i < flags.length && flag == null) {
+            flag = Utils.getArgument(args, flags[i]);
+        }
+
+        return flag;
+
+    }
+
+    /**
+     * Busca o argumento desejado no vetor de argumentos.
+     *
+     * @param args
+     * @param flag
+     * @return
+     */
+    public static String getArgument(String[] args, String flag) {
+
+        String filename = "/home/douglas/IFES/ifes_bsi/6_periodo/tpa/sources/2/sortingAlgorithms/data/data16.csv";
+        String sortname = "quicksort";
+
+        if (flag.equalsIgnoreCase("filename") || flag.equalsIgnoreCase("f")) {
+            return filename;
+        } else if (flag.equalsIgnoreCase("algorithm") || flag.equalsIgnoreCase("a")) {
+            return sortname;
+        }
+
+        return null;
+
     }
 
 }
