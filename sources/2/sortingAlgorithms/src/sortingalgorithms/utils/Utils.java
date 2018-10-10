@@ -26,7 +26,7 @@ public class Utils {
         Person[] people = new Person[numberPeople];
         
         for (int i = 0; i < numberPeople; i++) {
-            Object[] person = content[i].split(";");
+            Object[] person = content[i].split(",");
             people[i] = new Person(person);
         }
 
@@ -63,8 +63,8 @@ public class Utils {
      */
     public static String getArgument(String[] args, String flag) {
 
-        String filename = "/home/douglas/IFES/ifes_bsi/6_periodo/tpa/sources/2/sortingAlgorithms/data/data16.csv";
-        String sortname = "mergesort";
+        String filename = "/home/douglas/IFES/ifes_bsi/6_periodo/tpa/sources/2/sortingAlgorithms/data/trab2-data/data_10e5.csv";
+        String sortname = "quicksort";
 
         if (flag.equalsIgnoreCase("filename") || flag.equalsIgnoreCase("f")) {
             return filename;
@@ -74,6 +74,17 @@ public class Utils {
 
         return null;
 
+    }
+
+    /**
+     * Imprime o resultado final do tempo de ordenação do dados.
+     *
+     * @param ident Identificador do algoritmo de ordenação.
+     * @param numberElements Número de elementos ordenados.
+     * @param diffenrece Tempo de execução em milissegundos.
+     */
+    public static void printFinalResult(String ident, Integer numberElements, long diffenrece) {
+        System.out.println(String.format("%s\t%d\t%d", ident, numberElements, diffenrece));
     }
 
 }

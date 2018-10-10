@@ -30,26 +30,30 @@ public class SortingAlgorithms {
             System.out.println(arg);
         }
 
+        // Instanciando a classe de manipulação de arquivos csv.
         CsvFile csvFile = new CsvFile();
+
+        // Selecionando o algoritmo de ordenação a ser utilizado.
         AlgorithmFactory<Person> algorithmFactory = new AlgorithmFactory<>();
         Algorithm<Person> algorithm = algorithmFactory.selectAlgorithm(args);
-        
+
         if (algorithm == null) {
             throw new Exception("Algoritmo não definido.");
         }
-        
-        Integer numberLines = csvFile.getNumberLines(args);
 
+        // Montando array de pessoas com base nos dados do arquivo csv disponibilizado.
         String[] content = csvFile.getContent(args);
-
         Person[] people = Utils.convertToPerson(content);
+
+        // Pegando o tempo inicial da execução.
+        long initialTemp = System.currentTimeMillis();
 
         algorithm.sort(people, (a, b) -> a.getUid().compareTo(b.getUid()));
 
-        for (Person person : people) {
-            System.out.println(person.getUid());
-        }
-
+        // Pegando o tempo final da execução.
+        long finalTemp = System.currentTimeMillis();
+        
+        Utils.printFinalResult(algorithm.getId(), content.length, finalTemp - initialTemp);
     }
 
 }

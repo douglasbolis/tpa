@@ -60,7 +60,7 @@ public class CsvFile {
             }
         }
 
-        return numberLines;
+        return numberLines - 1;
 
     }
 
@@ -75,16 +75,20 @@ public class CsvFile {
         int numberLines = this.getNumberLines(args);
         String[] content = new String[numberLines];
         BufferedReader br = null;
-        String line = "";
         int i = 0;
 
         try {
 
             br = new BufferedReader(new FileReader(filename));
-            while ((line = br.readLine()) != null) {
+            String line = br.readLine();
+            // Ignorando o cabeçalho(nome das colunas).
+            line = br.readLine();
+
+            while (line != null) {
 
                 content[i] = line;
                 i++;
+                line = br.readLine();
 
             }
 
