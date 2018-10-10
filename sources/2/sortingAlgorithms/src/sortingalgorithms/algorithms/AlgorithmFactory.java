@@ -36,7 +36,7 @@ public class AlgorithmFactory<T> {
             algorithm = new MergeSort();
         } else if (sortingType.equalsIgnoreCase("quicksort")) {
             algorithm = new QuickSort();
-        } else if (sortingType.equalsIgnoreCase("heapsort")) { // Implementação errada.
+        } else if (sortingType.equalsIgnoreCase("heapsort")) {
             algorithm = new HeapSort();
         }
 

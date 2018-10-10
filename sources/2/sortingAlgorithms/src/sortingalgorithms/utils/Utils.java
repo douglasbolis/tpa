@@ -64,7 +64,7 @@ public class Utils {
     public static String getArgument(String[] args, String flag) {
 
         String filename = "/home/douglas/IFES/ifes_bsi/6_periodo/tpa/sources/2/sortingAlgorithms/data/data16.csv";
-        String sortname = "quicksort";
+        String sortname = "heapsort";
 
         if (flag.equalsIgnoreCase("filename") || flag.equalsIgnoreCase("f")) {
             return filename;
