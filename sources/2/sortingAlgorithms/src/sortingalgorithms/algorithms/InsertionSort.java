@@ -22,15 +22,16 @@ public class InsertionSort<T> extends Algorithm<T> {
     @Override
     public void sort(T[] ts, Comparator<T> comp) {
 
-        for (int j = 1; j < ts.length; j++) {
-            int i = j - 1;
+        for (int i = 1; i < ts.length; ++i) {
+            int j = i - 1;
+            T key = ts[i];
 
-            while (i >= 0 && comp.compare(ts[i], ts[j]) > 0) {
-                ts[i + 1] = ts[i];
-                i--;
+            while (j >= 0 && comp.compare(ts[j], key) > 0) {
+                ts[j + 1] = ts[j];
+                j--;
             }
 
-            ts[i + 1] = ts[j];
+            ts[j + 1] = key;
         }
 
     }

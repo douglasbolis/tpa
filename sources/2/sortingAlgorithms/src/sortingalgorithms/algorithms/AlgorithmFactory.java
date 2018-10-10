@@ -30,7 +30,7 @@ public class AlgorithmFactory<T> {
 
         if (sortingType.equalsIgnoreCase("selectionsort")) {
             algorithm = new SelectionSort();
-        } else if (sortingType.equalsIgnoreCase("insertionsort")) { // Implementação errada.
+        } else if (sortingType.equalsIgnoreCase("insertionsort")) {
             algorithm = new InsertionSort();
         } else if (sortingType.equalsIgnoreCase("mergesort")) { // Implementação errada.
             algorithm = new MergeSort();
