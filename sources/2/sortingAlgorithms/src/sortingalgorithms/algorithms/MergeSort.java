@@ -76,7 +76,7 @@ public class MergeSort<T> extends Algorithm<T> {
 
         int i = 0;
         int j = 0;
-        int k = 0;
+        int k = lowerIndex;
 
         while (i < n1 && j < n2) {
             if (comp.compare(leftT[i], rightT[j]) > 0) {

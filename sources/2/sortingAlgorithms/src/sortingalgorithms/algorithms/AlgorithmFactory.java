@@ -32,7 +32,7 @@ public class AlgorithmFactory<T> {
             algorithm = new SelectionSort();
         } else if (sortingType.equalsIgnoreCase("insertionsort")) {
             algorithm = new InsertionSort();
-        } else if (sortingType.equalsIgnoreCase("mergesort")) { // Implementação errada.
+        } else if (sortingType.equalsIgnoreCase("mergesort")) {
             algorithm = new MergeSort();
         } else if (sortingType.equalsIgnoreCase("quicksort")) {
             algorithm = new QuickSort();
