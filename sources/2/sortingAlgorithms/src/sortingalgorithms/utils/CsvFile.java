@@ -6,8 +6,10 @@
 package sortingalgorithms.utils;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 /**
@@ -24,7 +26,18 @@ public class CsvFile {
      * @return Nome do arquivo de dados.
      */
     public String getFilename(String[] args) {
-        String[] flags = {"filename", "f"};
+        String[] flags = {"input", "i"};
+        return Utils.getArgument(args, flags);
+    }
+
+    /**
+     * Seleciona o nome do arquivo do vetor de argumentos.
+     *
+     * @param args
+     * @return Nome do arquivo de dados.
+     */
+    public String getOutputFilename(String[] args) {
+        String[] flags = {"output", "o"};
         return Utils.getArgument(args, flags);
     }
 
@@ -107,6 +120,43 @@ public class CsvFile {
         }
 
         return content;
+
+    }
+    
+    /**
+     * Escreve os dados ordenados no arquivo de saída.
+     *
+     * @param args
+     * @param content
+     */
+    public void setContent(String[] args, String[] content) {
+
+        String filename = this.getOutputFilename(args);
+        BufferedWriter bw = null;
+
+        try {
+
+            bw = new BufferedWriter(new FileWriter(filename));
+
+            for (String line : content) {
+                bw.write(line);
+            }
+
+            bw.flush();
+            
+        } catch (FileNotFoundException error) {
+            error.printStackTrace();
+        } catch (IOException error) {
+            error.printStackTrace();
+        } finally {
+            if (bw != null) {
+                try {
+                    bw.close();
+                } catch (IOException error) {
+                    error.printStackTrace();
+                }
+            }
+        }
 
     }
 

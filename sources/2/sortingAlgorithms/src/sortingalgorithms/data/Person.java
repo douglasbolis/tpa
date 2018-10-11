@@ -107,5 +107,19 @@ public class Person {
     public double getWeight() {
         return weight;
     }
+    
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(mail).append(",");
+        sb.append(gender).append(",");
+        sb.append(uid).append(",");
+        sb.append(birthdate).append(",");
+        sb.append(height).append(",");
+        sb.append(weight).append("\n");
+
+        return sb.toString();
+    }
 
 }

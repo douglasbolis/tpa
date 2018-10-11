@@ -43,17 +43,21 @@ public class SortingAlgorithms {
 
         // Montando array de pessoas com base nos dados do arquivo csv disponibilizado.
         String[] content = csvFile.getContent(args);
-        Person[] people = Utils.convertToPerson(content);
+        Person[] people = Utils.stringToPerson(content);
 
         // Pegando o tempo inicial da execução.
         long initialTemp = System.currentTimeMillis();
-
+        // Ordenando vetor.
         algorithm.sort(people, (a, b) -> a.getUid().compareTo(b.getUid()));
-
         // Pegando o tempo final da execução.
         long finalTemp = System.currentTimeMillis();
-        
+
+        // Imprimindo resultado final.
         Utils.printFinalResult(algorithm.getId(), content.length, finalTemp - initialTemp);
+
+        // Escrevendo dados ordenados no arquivo de saída.
+        content = Utils.personToString(people);
+        csvFile.setContent(args, content);
     }
 
 }

@@ -20,17 +20,36 @@ public class Utils {
      * @param content
      * @return Vetor de pessoas.
      */
-    public static Person[] convertToPerson(String[] content) {
+    public static Person[] stringToPerson(String[] content) {
 
         Integer numberPeople = content.length;
         Person[] people = new Person[numberPeople];
-        
+
         for (int i = 0; i < numberPeople; i++) {
             Object[] person = content[i].split(",");
             people[i] = new Person(person);
         }
 
         return people;
+
+    }
+
+    /**
+     * Converte o vetor de pessoas para um vetor de strings.
+     *
+     * @param content
+     * @return Vetor de strings.
+     */
+    public static String[] personToString(Person[] content) {
+
+        Integer numberStr = content.length;
+        String[] str = new String[numberStr];
+
+        for (int i = 0; i < numberStr; i++) {
+            str[i] = ((Person) content[i]).toString();
+        }
+
+        return str;
 
     }
 
@@ -63,11 +82,14 @@ public class Utils {
      */
     public static String getArgument(String[] args, String flag) {
 
-        String filename = "/home/douglas/IFES/ifes_bsi/6_periodo/tpa/sources/2/sortingAlgorithms/data/trab2-data/data_10e5.csv";
+        String input = "/home/douglas/IFES/ifes_bsi/6_periodo/tpa/sources/2/sortingAlgorithms/data/trab2-data/data_10e0.csv";
+        String output = "/home/douglas/IFES/ifes_bsi/6_periodo/tpa/sources/2/sortingAlgorithms/data/trab2-data/sorted_10e0.csv";
         String sortname = "quicksort";
 
-        if (flag.equalsIgnoreCase("filename") || flag.equalsIgnoreCase("f")) {
-            return filename;
+        if (flag.equalsIgnoreCase("input") || flag.equalsIgnoreCase("i")) {
+            return input;
+        } else if (flag.equalsIgnoreCase("output") || flag.equalsIgnoreCase("o")) {
+            return output;
         } else if (flag.equalsIgnoreCase("algorithm") || flag.equalsIgnoreCase("a")) {
             return sortname;
         }
