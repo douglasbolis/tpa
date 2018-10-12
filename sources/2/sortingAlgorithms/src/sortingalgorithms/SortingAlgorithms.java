@@ -26,10 +26,6 @@ public class SortingAlgorithms {
      */
     public static void main(String[] args) throws Exception {
 
-        for (String arg : args) {
-            System.out.println(arg);
-        }
-
         // Instanciando a classe de manipulação de arquivos csv.
         CsvFile csvFile = new CsvFile();
 
@@ -58,6 +54,7 @@ public class SortingAlgorithms {
         // Escrevendo dados ordenados no arquivo de saída.
         content = Utils.personToString(people);
         csvFile.setContent(args, content);
+
     }
 
 }

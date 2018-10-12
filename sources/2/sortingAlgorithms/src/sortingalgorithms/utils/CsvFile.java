@@ -26,7 +26,7 @@ public class CsvFile {
      * @return Nome do arquivo de dados.
      */
     public String getFilename(String[] args) {
-        String[] flags = {"input", "i"};
+        String[] flags = {"--input", "-i"};
         return Utils.getArgument(args, flags);
     }
 
@@ -37,7 +37,7 @@ public class CsvFile {
      * @return Nome do arquivo de dados.
      */
     public String getOutputFilename(String[] args) {
-        String[] flags = {"output", "o"};
+        String[] flags = {"--output", "-o"};
         return Utils.getArgument(args, flags);
     }
 

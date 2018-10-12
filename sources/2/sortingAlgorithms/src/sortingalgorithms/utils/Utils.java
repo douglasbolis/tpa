@@ -54,6 +54,17 @@ public class Utils {
     }
 
     /**
+     * Imprime o resultado final do tempo de ordenação do dados.
+     *
+     * @param ident Identificador do algoritmo de ordenação.
+     * @param numberElements Número de elementos ordenados.
+     * @param diffenrece Tempo de execução em milissegundos.
+     */
+    public static void printFinalResult(String ident, Integer numberElements, long diffenrece) {
+        System.out.println(String.format("%s\t%d\t%d", ident, numberElements, diffenrece));
+    }
+
+    /**
      * Busca o argumento desejado no vetor de argumentos.
      *
      * @param args
@@ -67,6 +78,7 @@ public class Utils {
 
         while (i < flags.length && flag == null) {
             flag = Utils.getArgument(args, flags[i]);
+            i++;
         }
 
         return flag;
@@ -82,31 +94,36 @@ public class Utils {
      */
     public static String getArgument(String[] args, String flag) {
 
-        String input = "/home/douglas/IFES/ifes_bsi/6_periodo/tpa/sources/2/sortingAlgorithms/data/trab2-data/data_10e0.csv";
-        String output = "/home/douglas/IFES/ifes_bsi/6_periodo/tpa/sources/2/sortingAlgorithms/data/trab2-data/sorted_10e0.csv";
-        String sortname = "quicksort";
+//        String input = "/home/douglas/IFES/ifes_bsi/6_periodo/tpa/sources/2/sortingAlgorithms/data/trab2-data/data_50e5.csv";
+//        String output = "/home/douglas/IFES/ifes_bsi/6_periodo/tpa/sources/2/sortingAlgorithms/data/trab2-data/sorted_50e5.csv";
+//        String sortname = "quicksort";
+//
+//        if (flag.equalsIgnoreCase("input") || flag.equalsIgnoreCase("i")) {
+//            return input;
+//        } else if (flag.equalsIgnoreCase("output") || flag.equalsIgnoreCase("o")) {
+//            return output;
+//        } else if (flag.equalsIgnoreCase("algorithm") || flag.equalsIgnoreCase("a")) {
+//            return sortname;
+//        }
+//
+//        return null;
+        String argSelected = null;
+        int i = 0;
 
-        if (flag.equalsIgnoreCase("input") || flag.equalsIgnoreCase("i")) {
-            return input;
-        } else if (flag.equalsIgnoreCase("output") || flag.equalsIgnoreCase("o")) {
-            return output;
-        } else if (flag.equalsIgnoreCase("algorithm") || flag.equalsIgnoreCase("a")) {
-            return sortname;
+        while (argSelected == null && i < args.length) {
+            if (args[i].equalsIgnoreCase(flag)) {
+                argSelected = args[i + 1];
+            } else if (args[i].contains("=")) {
+                String[] params = args[i].split("=");
+                if (params[0].equalsIgnoreCase(flag)) {
+                    argSelected = params[1];
+                }
+            }
+            i++;
         }
 
-        return null;
+        return argSelected;
 
-    }
-
-    /**
-     * Imprime o resultado final do tempo de ordenação do dados.
-     *
-     * @param ident Identificador do algoritmo de ordenação.
-     * @param numberElements Número de elementos ordenados.
-     * @param diffenrece Tempo de execução em milissegundos.
-     */
-    public static void printFinalResult(String ident, Integer numberElements, long diffenrece) {
-        System.out.println(String.format("%s\t%d\t%d", ident, numberElements, diffenrece));
     }
 
 }

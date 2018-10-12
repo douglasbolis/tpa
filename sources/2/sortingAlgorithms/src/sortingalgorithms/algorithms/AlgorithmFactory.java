@@ -25,7 +25,7 @@ public class AlgorithmFactory<T> {
     public Algorithm<T> selectAlgorithm(String[] args) {
 
         Algorithm<T> algorithm = null;
-        String[] flags = {"algorithm", "a"};
+        String[] flags = {"--algorithm", "-a"};
         String sortingType = Utils.getArgument(args, flags);
 
         if (sortingType.equalsIgnoreCase("selectionsort")) {
