@@ -25,7 +25,7 @@ public class CsvFile {
      * @param args
      * @return Nome do arquivo de dados.
      */
-    public String getFilename(String[] args) {
+    public String getInputFilename(String[] args) {
         String[] flags = {"--input", "-i"};
         return Utils.getArgument(args, flags);
     }
@@ -44,11 +44,11 @@ public class CsvFile {
     /**
      * Calcula o número de linhas do arquivo csv.
      *
-     * @param args
+     * @param filename
      * @return Número de linhas no arquivo de dados.
      */
-    public Integer getNumberLines(String[] args) {
-        String filename = this.getFilename(args);
+    public Integer getNumberLines(String filename) {
+
         BufferedReader br = null;
         Integer numberLines = 0;
         String line = "";
@@ -80,12 +80,12 @@ public class CsvFile {
     /**
      * Reune o conteúdo do arquivo de dados.
      *
-     * @param args
+     * @param filename
+     * @param numberLines
      * @return Vetor com o conteúdo do arquivo de dados.
      */
-    public String[] getContent(String[] args) {
-        String filename = this.getFilename(args);
-        int numberLines = this.getNumberLines(args);
+    public String[] getContent(String filename, int numberLines) {
+
         String[] content = new String[numberLines];
         BufferedReader br = null;
         int i = 0;
@@ -126,12 +126,11 @@ public class CsvFile {
     /**
      * Escreve os dados ordenados no arquivo de saída.
      *
-     * @param args
+     * @param filename
      * @param content
      */
-    public void setContent(String[] args, String[] content) {
+    public void setContent(String filename, String[] content) {
 
-        String filename = this.getOutputFilename(args);
         BufferedWriter bw = null;
 
         try {

@@ -32,13 +32,26 @@ public class SortingAlgorithms {
         // Selecionando o algoritmo de ordenação a ser utilizado.
         AlgorithmFactory<Person> algorithmFactory = new AlgorithmFactory<>();
         Algorithm<Person> algorithm = algorithmFactory.selectAlgorithm(args);
+        
+        // Selecionando os arquivos de entrada e saída.
+        String inputFile = csvFile.getInputFilename(args);
+        String outputFile = csvFile.getOutputFilename(args);
 
         if (algorithm == null) {
             throw new Exception("Algoritmo não definido.");
         }
 
+        if (inputFile == null) {
+            throw new Exception("Arquivo de dados não definido.");
+        }
+
+        if (outputFile == null) {
+            throw new Exception("Arquivo de saída não definido.");
+        }
+
         // Montando array de pessoas com base nos dados do arquivo csv disponibilizado.
-        String[] content = csvFile.getContent(args);
+        Integer numberLines = csvFile.getNumberLines(inputFile);
+        String[] content = csvFile.getContent(inputFile, numberLines);
         Person[] people = Utils.stringToPerson(content);
 
         // Pegando o tempo inicial da execução.
@@ -53,7 +66,7 @@ public class SortingAlgorithms {
 
         // Escrevendo dados ordenados no arquivo de saída.
         content = Utils.personToString(people);
-        csvFile.setContent(args, content);
+        csvFile.setContent(outputFile, content);
 
     }
 
