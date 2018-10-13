@@ -1,0 +1,80 @@
+\documentclass[a4paper,12pt]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage[margin=25mm,bottom=30mm]{geometry}
+\usepackage{hyperref}
+\usepackage{amsmath,amssymb}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{minted}
+\usepackage{tabto}
+\usepackage{siunitx}
+
+
+\newcommand{\algorithmautorefname}{Algoritmo}
+
+
+\title{Relatório do Trabalho de Ordenação e Estatística de Ordem}
+\subtitle{Técnicas de Programação Avançada --- Ifes --- Campus Serra}
+\author{\underline{Aluno: Douglas Bolis Lima}}
+\date{2018-2}
+
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\section{Introdução}
+
+Este documento tem o propósito duplo de servir de modelo para confecção do relatório que deve ser entregue como parte do Trabalho de Ordenação e Estatísticas de Ordem da disciplina de Técnicas de Programação Avançada, e também de descrever dois algoritmos de ordenação não discutidos em sala de aula.
+
+\subsection{Ambiente de Desenvolvimento}
+
+Para o desenvolvimento do trabalho foi utilizada a linguagem Java, e para automação de algumas das atividades de preparação de dados foram utilizados scripts do interpretador de comandos (shell) Bash.
+Para edição do código fonte foi utilizado a IDE Netbeans na versão 9.0.
+
+\section{Geração de Dados para Testes}
+
+Originalmente, pretendia-se utilizar um sistema online de geração de dos aleatórios para testes. Entretanto, todos os sistemas online gratuitos encontrados tinham severas limitações de número de registros que poderiam ser criados. Tipicamente limitando este número em 500 registros ou menos. Como seria necessária a geração de arquivos com mais de 1 milhão de registros para os testes dos algoritmos de ordenação, a opção de utilizar um sistema online ficou inviabilizada.
+Deste modo, foi desenvolvido um programa específico para geração dos dados para teste dos algoritmos de ordenação. Este programa foi desenvolvido na linguagem Scala, e é um programa relativamente simples.
+
+\label{sec:polit-de-colab}
+
+Resolver um problema algorítmico é um processo criativo. Quando apresentado a um
+novo problema, é sua tarefa ''desmontá-lo'' e alcançar seu próprio entendimento.
+Este é um processo meticuloso e demorado. Há muito a ser aprendido com o
+processo de pensar em soluções para os problemas de tarefa de casa atribuídos.
+Obter ajuda de outro lugar destrói esse processo. No entanto, discutir com os
+outros depois de ter passado algum tempo com um problema pode ajudar o processo
+e trazer à luz outros aspectos do problema.
+
+Você pode discutir problemas de lição de casa comigo ou com outros alunos da sua
+turma, depois de ter pensado o suficiente. Mas quando chega a hora de escrever
+sua solução, ela deve ser seu próprio trabalho e deve estar em suas próprias
+palavras. Se, depois de trabalhar em um problema, você não conseguir resolvê-lo
+satisfatoriamente, poderá obter ajuda de outras pessoas, de livros didáticos ou
+da Internet. Se você recebeu ajuda de qualquer outra fonte, é necessário citar
+sua fonte no local apropriado da lição de casa, ou seja, anote a URL ou o nome
+da pessoa ou o autor e título do texto do qual sua solução foi adquirida.
+
+Depois de obter ajuda de alguma fonte, tente escrever a solução com suas
+próprias palavras. Se você discutiu com um colega de classe ou amigo e chegou a
+uma solução juntos, então vocês dois devem indicar isso em seus trabalhos de
+casa. Se você estiver ajudando alguém ou fornecendo sua solução para alguém,
+certifique-se de que ela seja anotada como a fonte da solução. Você também pode
+indicar que você ajudou essa pessoa com o problema especificado. Se você não
+escrever onde obteve ajuda, isso seria considerado uma fraude (``cola'').
+
+Qualquer evidência de fraude (sem citar a fonte) resultará em severa
+penalização de todas as partes envolvidas.
+
+\end{document}
+
+% Local Variables:
+% ispell-local-dictionary: "brasileiro"
+% TeX-master: t
+% TeX-command-extra-options: "-shell-escape"
+% End:
