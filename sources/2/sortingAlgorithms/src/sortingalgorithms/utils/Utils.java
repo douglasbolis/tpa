@@ -94,19 +94,6 @@ public class Utils {
      */
     public static String getArgument(String[] args, String flag) {
 
-//        String input = "/home/douglas/IFES/ifes_bsi/6_periodo/tpa/sources/2/sortingAlgorithms/data/trab2-data/data_50e5.csv";
-//        String output = "/home/douglas/IFES/ifes_bsi/6_periodo/tpa/sources/2/sortingAlgorithms/data/trab2-data/sorted_50e5.csv";
-//        String sortname = "quicksort";
-//
-//        if (flag.equalsIgnoreCase("input") || flag.equalsIgnoreCase("i")) {
-//            return input;
-//        } else if (flag.equalsIgnoreCase("output") || flag.equalsIgnoreCase("o")) {
-//            return output;
-//        } else if (flag.equalsIgnoreCase("algorithm") || flag.equalsIgnoreCase("a")) {
-//            return sortname;
-//        }
-//
-//        return null;
         String argSelected = null;
         int i = 0;
 

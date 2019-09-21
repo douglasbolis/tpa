@@ -19,12 +19,7 @@ MYSORT_JAR=$TRAB2_DIR/dist/sortingAlgorithms.jar
 # de entrada tem nomes que sequem o padrão `data_ID.csv`, e todos os arquivos de
 # saída terão nomes que seguem o padrão `sorted_ID.csv`; onde ID é um elemento
 # da lista abaixo.
-FILE_IDS=(10e0 25e0 50e0 75e0\
-          10e1 25e1 50e1 75e1\
-          10e2 25e2 50e2 75e2\
-          10e3 25e3 50e3 75e3\
-          10e4 25e4 50e4 75e4\
-          10e5 25e5 50e5 75e5)
+FILE_IDS=(75e4 10e5 25e5 50e5 75e5)
 
 # Data e hora de execução deste script de shell. Será usado para criar os nomes
 # dos arquivos de dados de tempo, de log de trabalho e de alerta de término de
@@ -36,7 +31,7 @@ REPORT_FILE="data_${TIMESTAMP}.dat"
 
 # Número de vezes que cada programa de ordenação será executado para cada
 # arquivo de entrada de dados.
-NUM_RUNS=10
+NUM_RUNS=5
 
 # Data e hora (com precisão de milisegundos) de início da execução dos
 # programas. Será gravado no arquivo de alerta de término de execução.
@@ -50,23 +45,23 @@ WORK_FILE="$REPORT_DIR/working_${TIMESTAMP}.txt"
 # Cria o arquivo de log de trabalho.
 touch $WORK_FILE
 
-# Para cada algoritmo de ordenação,...
-for algid in "selectionsort" "insertionsort" "mergesort" "quicksort" "heapsort"
+# Para cada uma das N vezes,...
+for n in `seq $NUM_RUNS`
 do
 
-  echo "#$algid"
   # Para cada ID na lista,...
   for id in ${FILE_IDS[*]}
   do
 
-    echo -n "==> $id "
-    # Para cada uma das N vezes,...
-    for n in `seq $NUM_RUNS`
+    # Para cada algoritmo de ordenação,...
+    for algid in "selectionsort" "insertionsort"
     do
 
+      echo -n "==> $algid ==> $id "
       INFILE="$DATA_DIR/data_${id}.csv"
       OUTFILE="$DATA_DIR/sorted_${id}.csv"
-      CMD="java -jar $MYSORT_JAR -a $algid -i $INFILE -o $OUTFILE >> $REPORT_DIR/$REPORT_FILE"
+      # Execute as ordenações e libere até 4GB para as alocações de memória.
+      CMD="java -Xmx5120M -jar $MYSORT_JAR -a $algid -i $INFILE -o $OUTFILE >> $REPORT_DIR/$REPORT_FILE"
       echo $CMD >> $WORK_FILE
       echo -n .
       eval $CMD

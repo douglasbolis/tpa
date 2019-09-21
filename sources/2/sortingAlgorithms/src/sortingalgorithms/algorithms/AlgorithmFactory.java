@@ -8,8 +8,7 @@ package sortingalgorithms.algorithms;
 import sortingalgorithms.utils.Utils;
 
 /**
- * Classe AlgorithmFactory para definir qual algoritmo de ordenação será
- * utilizado.
+ * Classe AlgorithmFactory para definir qual algoritmo de ordenação será utilizado.
  *
  * @author douglas
  * @param <T>

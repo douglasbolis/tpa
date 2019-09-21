@@ -64,9 +64,9 @@ public class SortingAlgorithms {
         // Imprimindo resultado final.
         Utils.printFinalResult(algorithm.getId(), content.length, finalTemp - initialTemp);
 
-        // Escrevendo dados ordenados no arquivo de saída.
-        content = Utils.personToString(people);
-        csvFile.setContent(outputFile, content);
+//        // Escrevendo dados ordenados no arquivo de saída.
+//        content = Utils.personToString(people);
+//        csvFile.setContent(outputFile, content);
 
     }
 
